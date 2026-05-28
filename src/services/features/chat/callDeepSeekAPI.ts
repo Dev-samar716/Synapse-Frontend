@@ -4,7 +4,7 @@ interface Props {
     contents: Content[];
 }
 
-const callGeminiAPI = async({contents} : Props) => {
+const callDeepSeekAPI = async({contents} : Props) => {
     try {
         const response = await fetch('https://synapse-backend-3.onrender.com/chat/', {
             method: "POST",
@@ -28,4 +28,4 @@ const callGeminiAPI = async({contents} : Props) => {
     }
 }
 
-export default callGeminiAPI;
+export default callDeepSeekAPI;

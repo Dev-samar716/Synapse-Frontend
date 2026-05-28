@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { Content } from "../../../types/ContentType";
-import callGeminiAPI from "../../../services/features/chat/callGeminiAPI";
+import callDeepSeekAPI from "../../../services/features/chat/callDeepSeekAPI";
 
 interface Parameters {
     contents: Content[]
@@ -9,7 +9,7 @@ interface Parameters {
 
 const sendChatMessage = async({contents, setContents} : Parameters) => {
     try {
-        const data = await callGeminiAPI({contents});
+        const data = await callDeepSeekAPI({contents});
 
         if(data?.success && data?.data?.candidates?.[0]?.content) {
             
