@@ -1,6 +1,4 @@
 
-
-import Navbar from "../components/Navbar";
 import ChatContainer from "../components/ChatContainer";
 import InputBox from "../components/InputBox";
 
@@ -10,8 +8,6 @@ const ChatPage = () => {
 
       {/* Main Layout */}
       <div className="flex-1 flex flex-col">
-        {/* Navbar */}
-        <Navbar />
 
         {/* Chat Messages */}
         <ChatContainer />
