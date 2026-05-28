@@ -13,7 +13,7 @@ const sendChatMessage = async({contents, setContents} : Parameters) => {
 
         if(data?.success && data?.data?.candidates?.[0]?.content) {
             
-            const newModelMessage = data.data.candidates[0].content;
+            const newModelMessage = data.data.candidates?.[0].content;
             
             setContents(prev => [...prev, newModelMessage]);
         } else {
