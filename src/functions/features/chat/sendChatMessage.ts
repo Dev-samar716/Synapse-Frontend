@@ -11,11 +11,16 @@ const sendChatMessage = async({contents, setContents} : Parameters) => {
     try {
         const data = await callGeminiAPI({contents});
 
-        if(data.success) {
-            setContents(prev => [...prev, data.data.candidates[0].content]);
+        if(data?.success && data?.data?.candidates?.[0]?.content) {
+            
+            const newModelMessage = data.data.candidates[0].content;
+            
+            setContents(prev => [...prev, newModelMessage]);
+        } else {
+            console.error("Invalid response from Gemini:", data);
         }
     } catch(error) {
-       console.log(error);
+       console.error("Error in sendChatMessage:", error);
     }
 }
 
