@@ -34,7 +34,7 @@ const ChatMessage = ({
           break-words
           ${
             isUser
-              ? "bg-white text-black rounded-br-md"
+              ? "bg-zinc-900 text-zinc-200 border border-zinc-800 rounded-bl-md"
               : "bg-zinc-900 text-zinc-200 border border-zinc-800 rounded-bl-md"
           }
         `}
