@@ -6,7 +6,7 @@ interface Props {
 
 const callDeepSeekAPI = async({contents} : Props) => {
     try {
-        const response = await fetch('https://synapse-backend-3.onrender.com/chat/', {
+        const response = await fetch('http://localhost:3000/chat', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

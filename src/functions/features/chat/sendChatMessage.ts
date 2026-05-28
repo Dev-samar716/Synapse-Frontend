@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { Content } from "../../../types/ContentType";
-import callDeepSeekAPI from "../../../services/features/chat/callDeepSeekAPI";
+import callGroqAPI from "../../../services/features/chat/callGroqAPI";
 
 interface Parameters {
     contents: Content[]
@@ -9,7 +9,7 @@ interface Parameters {
 
 const sendChatMessage = async({contents, setContents} : Parameters) => {
     try {
-        const data = await callDeepSeekAPI({contents});
+        const data = await callGroqAPI({contents});
 
         if(data?.success && data?.data?.candidates?.[0]?.content) {
             
@@ -17,7 +17,7 @@ const sendChatMessage = async({contents, setContents} : Parameters) => {
             
             setContents(prev => [...prev, newModelMessage]);
         } else {
-            console.error("Invalid response from Gemini:", data);
+            console.error("Invalid response from Groq:", data);
         }
     } catch(error) {
        console.error("Error in sendChatMessage:", error);
