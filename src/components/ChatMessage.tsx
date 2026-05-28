@@ -1,5 +1,7 @@
 
 
+import ReactMarkdown from "react-markdown";
+
 type ChatMessageProps = {
   role: string;
   message: string;
@@ -28,6 +30,8 @@ const ChatMessage = ({
           text-sm
           leading-relaxed
           shadow-lg
+          whitespace-pre-wrap
+          break-words
           ${
             isUser
               ? "bg-white text-black rounded-br-md"
@@ -42,7 +46,65 @@ const ChatMessage = ({
             <span className="w-2 h-2 rounded-full bg-zinc-400 animate-bounce" />
           </div>
         ) : (
-          message
+          <ReactMarkdown
+            components={{
+              h1: ({ children }) => (
+                <h1 className="text-2xl font-bold mb-4">
+                  {children}
+                </h1>
+              ),
+
+              h2: ({ children }) => (
+                <h2 className="text-xl font-semibold mb-3 mt-6">
+                  {children}
+                </h2>
+              ),
+
+              h3: ({ children }) => (
+                <h3 className="text-lg font-semibold mb-2 mt-5">
+                  {children}
+                </h3>
+              ),
+
+              p: ({ children }) => (
+                <p className="mb-4 text-zinc-300 leading-7">
+                  {children}
+                </p>
+              ),
+
+              ul: ({ children }) => (
+                <ul className="list-disc ml-6 mb-4">
+                  {children}
+                </ul>
+              ),
+
+              ol: ({ children }) => (
+                <ol className="list-decimal ml-6 mb-4">
+                  {children}
+                </ol>
+              ),
+
+              li: ({ children }) => (
+                <li className="mb-1">
+                  {children}
+                </li>
+              ),
+
+              strong: ({ children }) => (
+                <strong className="font-bold text-white">
+                  {children}
+                </strong>
+              ),
+
+              code: ({ children }) => (
+                <code className="bg-zinc-800 px-1 py-0.5 rounded text-sm">
+                  {children}
+                </code>
+              ),
+            }}
+          >
+            {message}
+          </ReactMarkdown>
         )}
       </div>
     </div>
