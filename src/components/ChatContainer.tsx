@@ -1,12 +1,11 @@
 
 import useContent from "../hooks/features/chat/useContent";
+import useResponseLoading from "../hooks/features/chat/useResponseLoading";
 import ChatMessage from "./ChatMessage";
 
 const ChatContainer = () => {
   const { contents } = useContent();
-
-  console.log("Contents length:", contents.length);
-  console.log("Full contents:", JSON.stringify(contents, null, 2));
+  const { responseLoading } = useResponseLoading();
 
   return (
     <main className="flex-1 overflow-y-auto px-6 py-8 bg-black">
@@ -22,6 +21,14 @@ const ChatContainer = () => {
             />
           );
         })}
+
+        {responseLoading && (
+          <ChatMessage
+            role="model"
+            message=""
+            loading={true}
+          />
+        )}
       </div>
     </main>
   );

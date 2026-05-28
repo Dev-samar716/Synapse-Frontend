@@ -5,14 +5,18 @@ import { Paperclip, SendHorizonal } from "lucide-react";
 import useUserPrompt from "../hooks/features/chat/useUserPrompt";
 import useContent from "../hooks/features/chat/useContent";
 import sendChatMessage from "../functions/features/chat/sendChatMessage";
+import useResponseLoading from "../hooks/features/chat/useResponseLoading";
 
 const InputBox = () => {
 
   const { prompt, setPrompt } = useUserPrompt();
   const { contents, setContents } = useContent();
+  const { setResponseLoading } = useResponseLoading();
 
   const handleSend = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    setResponseLoading(true);
 
     const content = {
       role: "user",
@@ -24,7 +28,8 @@ const InputBox = () => {
     setContents(updatedContent);
     
     await sendChatMessage({contents: updatedContent, setContents});
-    
+
+    setResponseLoading(false);
   }
 
   return (
