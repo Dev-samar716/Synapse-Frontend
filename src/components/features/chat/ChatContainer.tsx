@@ -1,6 +1,6 @@
 
-import useContent from "../hooks/features/chat/useContent";
-import useResponseLoading from "../hooks/features/chat/useResponseLoading";
+import useContent from "../../../hooks/features/chat/useContent";
+import useResponseLoading from "../../../hooks/features/chat/useResponseLoading";
 import ChatMessage from "./ChatMessage";
 
 const ChatContainer = () => {

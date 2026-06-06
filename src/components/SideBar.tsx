@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/features/auth/useAuth';
+import logout from '../functions/features/auth/Logout';
 
 const Sidebar = () => {
+
+  const { setUserInfo } = useAuth();
+  
   return (
     <aside className="w-[280px] min-h-screen bg-zinc-950 border-r border-zinc-800 flex flex-col justify-between px-4 py-5">
       {/* Top Section */}
@@ -30,10 +35,10 @@ const Sidebar = () => {
             Sign Up
           </Link>
 
-          <Link className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-900 hover:bg-red-500/10 transition text-red-400"
-          to="/auth/logout">
+          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-900 hover:bg-red-500/10 transition text-red-400"
+           onClick={() => logout({setUserInfo})}>
             Logout
-          </Link>
+          </button>
         </nav>
       </div>
 

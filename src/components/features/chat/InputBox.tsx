@@ -2,10 +2,10 @@
 
 import type { MouseEvent } from "react";
 import { Paperclip, SendHorizonal } from "lucide-react";
-import useUserPrompt from "../hooks/features/chat/useUserPrompt";
-import useContent from "../hooks/features/chat/useContent";
-import sendChatMessage from "../functions/features/chat/sendChatMessage";
-import useResponseLoading from "../hooks/features/chat/useResponseLoading";
+import useUserPrompt from "../../../hooks/features/chat/useUserPrompt";
+import useContent from "../../../hooks/features/chat/useContent";
+import sendChatMessage from "../../../functions/features/chat/sendChatMessage";
+import useResponseLoading from "../../../hooks/features/chat/useResponseLoading";
 
 const InputBox = () => {
 

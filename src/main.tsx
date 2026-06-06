@@ -5,15 +5,24 @@ import App from './App.tsx'
 import ContentProvider from './context/features/chat/ContentProvider.tsx'
 import UserPromptProvider from './context/features/chat/UserPromptProvider.tsx'
 import ResponseLoadingProvider from './context/features/chat/ResponseLoadingProvider.tsx'
+import AuthProvider from './context/features/auth/AuthProvider.tsx'
+import { TokenVerificationLoadingProvider } from './context/features/auth/TokenVerificationLoadingProvider.tsx'
+import PendingSignupProvider from './context/features/auth/PendingSignUpProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ContentProvider>
+    <TokenVerificationLoadingProvider>
+    <AuthProvider>
+        <ContentProvider>
       <UserPromptProvider>
         <ResponseLoadingProvider>
-           <App />
+          <PendingSignupProvider>
+            <App />
+          </PendingSignupProvider>
         </ResponseLoadingProvider>
       </UserPromptProvider>
     </ContentProvider> 
+    </AuthProvider>
+    </TokenVerificationLoadingProvider>
   </StrictMode>,
 )
