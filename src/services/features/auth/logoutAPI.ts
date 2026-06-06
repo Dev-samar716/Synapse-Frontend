@@ -2,7 +2,7 @@
 
 const logoutAPI = async() => {
     try {
-        const response = await fetch('http://localhost:3000/auth/logout', {
+        const response = await fetch('https://synapse-backend-3.onrender.com/auth/logout', {
             method: "GET",
             credentials: "include"
         })

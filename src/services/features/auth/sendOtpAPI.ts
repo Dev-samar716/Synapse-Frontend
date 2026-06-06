@@ -7,7 +7,7 @@ interface Parameters {
 
 const sendOtpAPI = async({email, setErrorMessage} : Parameters) => {
     try {
-        const response = await fetch("http://localhost:3000/auth/sendOtp", {
+        const response = await fetch("https://synapse-backend-3.onrender.com/auth/sendOtp", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

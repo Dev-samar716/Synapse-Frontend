@@ -2,7 +2,7 @@
 
 const verifyTokenAPI = async() => {
     try {
-        const response = await fetch('http://localhost:3000/auth/verify', {
+        const response = await fetch('https://synapse-backend-3.onrender.com/auth/verify', {
             method: "GET",
             credentials: "include"
         })

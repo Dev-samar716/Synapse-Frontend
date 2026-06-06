@@ -9,7 +9,7 @@ interface Parameters {
 
 const signupAPI = async({email, username, password, setErrorMessage} : Parameters) => {
     try {
-        const response = await fetch("http://localhost:3000/auth/register", {
+        const response = await fetch("https://synapse-backend-3.onrender.com/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

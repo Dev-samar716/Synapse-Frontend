@@ -8,7 +8,7 @@ interface Parameters {
 
 const verifyOtpAPI = async({email, otp_code, setErrorMessage} : Parameters) => {
      try {
-        const response = await fetch("http://localhost:3000/auth/verifyOtp", {
+        const response = await fetch("https://synapse-backend-3.onrender.com/auth/verifyOtp", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
