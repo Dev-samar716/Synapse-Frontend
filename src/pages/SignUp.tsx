@@ -2,11 +2,11 @@
 
 // pages/Signup.tsx
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import type { FormData } from "../types/AuthTypes";
-import sendOtpAPI from "../services/features/auth/sendOtpAPI";
-import usePendingSignup from "../hooks/features/auth/usePendingSignup";
+import registerUser from "../functions/features/auth/registerUser";
+import useAuth from "../hooks/features/auth/useAuth";
 
 const Signup = () => {
 
@@ -16,22 +16,24 @@ const Signup = () => {
     password: "",
   })
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const navigate = useNavigate();
-  const { setPendingSignup } = usePendingSignup();
+  const { setUserInfo } = useAuth();
  
-  const handleSend = async(e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
 
      e.preventDefault();
 
      if(!formData.username || !formData.email || !formData.password) {
          return setErrorMessage("Please fill all the fields!");
      }
-     const response = await sendOtpAPI({email: formData.email, setErrorMessage});
 
-       if(response.success) {
-         setPendingSignup(formData);
-         navigate(`/auth/verify-otp/${formData.email}`);
-       }
+     await registerUser({
+       email: formData.email,
+       username: formData.username,
+       password: formData.password,
+       setErrorMessage,
+       setUserInfo
+     })
+      
   }
 
   return (
@@ -50,7 +52,7 @@ const Signup = () => {
         </p>
         }
 
-        <form className="mt-8 space-y-5" onSubmit={handleSend}>
+        <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm text-zinc-300 mb-2">
               Username
@@ -100,7 +102,7 @@ const Signup = () => {
             type="submit"
             className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition text-white font-semibold"
           >
-            Input
+            Register
           </button>
         </form>
 
