@@ -5,11 +5,12 @@ import callGroqAPI from "../../../services/features/chat/callGroqAPI";
 interface Parameters {
     contents: Content[]
     setContents: Dispatch<SetStateAction<Content[]>>;
+    user_id: number;
 }
 
-const sendChatMessage = async({contents, setContents} : Parameters) => {
+const sendChatMessage = async({contents, setContents, user_id} : Parameters) => {
     try {
-        const data = await callGroqAPI({contents});
+        const data = await callGroqAPI({contents, user_id});
 
         if(data?.success && data?.data?.candidates?.[0]?.content) {
             

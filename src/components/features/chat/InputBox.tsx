@@ -6,12 +6,18 @@ import useUserPrompt from "../../../hooks/features/chat/useUserPrompt";
 import useContent from "../../../hooks/features/chat/useContent";
 import sendChatMessage from "../../../functions/features/chat/sendChatMessage";
 import useResponseLoading from "../../../hooks/features/chat/useResponseLoading";
+import useAuth from "../../../hooks/features/auth/useAuth";
 
 const InputBox = () => {
 
   const { prompt, setPrompt } = useUserPrompt();
   const { contents, setContents } = useContent();
   const { setResponseLoading } = useResponseLoading();
+  const { userInfo } = useAuth();
+
+  if(!userInfo) return null;
+
+  const user_id = userInfo.id;
 
   const handleSend = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,7 +33,7 @@ const InputBox = () => {
 
     setContents(updatedContent);
     
-    await sendChatMessage({contents: updatedContent, setContents});
+    await sendChatMessage({contents: updatedContent, setContents, user_id});
 
     setResponseLoading(false);
   }
