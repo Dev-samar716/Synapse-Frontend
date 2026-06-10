@@ -18,7 +18,7 @@ const registerUser = async({email, username, password, setErrorMessage, setUserI
 
         if(data.success) {
             setUserInfo(data.userInfo)
-            router.navigate("/");
+            router.navigate("/chat");
         }
      } catch(error) {
          console.log(error)

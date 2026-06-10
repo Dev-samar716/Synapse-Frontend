@@ -9,7 +9,8 @@ const router = createBrowserRouter([
     {
         element: <App_Layout />,
         children: [
-            {path: '/', element: <ProtectedRoute><ChatPage /></ProtectedRoute>}, 
+            {path: '/chat', element: <ProtectedRoute><ChatPage /></ProtectedRoute>}, 
+            {path: '/chat/:id', element: <ProtectedRoute><ChatPage /></ProtectedRoute>}, 
             {path: '/auth/register', element: <Signup />},
             {path: '/auth/login', element: <Login />},
         ]

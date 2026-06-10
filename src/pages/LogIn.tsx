@@ -31,7 +31,7 @@ const Login = () => {
 
      if(data) {
       setUserInfo(data.userInfo);
-      navigate("/");
+      navigate("/chat");
      }
   }
 
