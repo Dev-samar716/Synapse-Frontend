@@ -1,8 +1,9 @@
 
 
 const verifyTokenAPI = async() => {
+    const api_url = import.meta.env.VITE_API_URL
     try {
-        const response = await fetch('https://synapse-backend-3.onrender.com/auth/verify', {
+        const response = await fetch(`${api_url}/auth/verify`, {
             method: "GET",
             credentials: "include"
         })

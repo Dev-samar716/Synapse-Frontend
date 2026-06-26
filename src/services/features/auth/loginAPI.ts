@@ -8,8 +8,9 @@ interface Parameters {
 }
 
 const loginAPI = async({username, password, email, setErrorMessage} : Parameters) => {
+    const api_url = import.meta.env.VITE_API_URL
     try {
-        const response = await fetch("https://synapse-backend-3.onrender.com/auth/login", {
+        const response = await fetch(`${api_url}/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

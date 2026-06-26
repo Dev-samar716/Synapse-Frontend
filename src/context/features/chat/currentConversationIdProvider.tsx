@@ -13,7 +13,7 @@ export default function CurrentConversationIdProvider({
   children,
 }: CurrentConversationIdProviderProps) {
   const [currentConversationId, setCurrentConversationId] = useState<
-    number | null
+    string | null
   >(null);
 
   return (

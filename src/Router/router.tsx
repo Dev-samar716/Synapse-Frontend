@@ -4,11 +4,13 @@ import ChatPage from "../pages/ChatPage";
 import Signup from "../pages/SignUp";
 import Login from "../pages/LogIn";
 import ProtectedRoute from "../components/features/auth/ProtectedRoute";
+import WelcomePage from "../pages/WelcomePage";
 
 const router = createBrowserRouter([
     {
         element: <App_Layout />,
         children: [
+            {path: '/', element: <WelcomePage />},
             {path: '/chat', element: <ProtectedRoute><ChatPage /></ProtectedRoute>}, 
             {path: '/chat/:id', element: <ProtectedRoute><ChatPage /></ProtectedRoute>}, 
             {path: '/auth/register', element: <Signup />},

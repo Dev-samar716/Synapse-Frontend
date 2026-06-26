@@ -2,9 +2,9 @@
 import { createContext } from "react";
 
 export interface CurrentConversationIdContextType {
-  currentConversationId: number | null;
+  currentConversationId: string | null;
   setCurrentConversationId: React.Dispatch<
-    React.SetStateAction<number | null>
+    React.SetStateAction<string | null>
   >;
 }
 

@@ -8,8 +8,9 @@ interface Parameters {
 }
 
 const signupAPI = async({email, username, password, setErrorMessage} : Parameters) => {
+    const api_url = import.meta.env.VITE_API_URL
     try {
-        const response = await fetch("https://synapse-backend-3.onrender.com/auth/register", {
+        const response = await fetch(`${api_url}/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -1,8 +1,9 @@
 
 
 const logoutAPI = async() => {
+    const api_url = import.meta.env.VITE_API_URL
     try {
-        const response = await fetch('https://synapse-backend-3.onrender.com/auth/logout', {
+        const response = await fetch(`${api_url}/auth/logout`, {
             method: "GET",
             credentials: "include"
         })

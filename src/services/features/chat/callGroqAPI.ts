@@ -2,20 +2,20 @@ import type { Content } from "../../../types/ContentType";
 
 interface Props {
     contents: Content[];
-    user_id: number;
-    currentConversationId: number | null
+    currentConversationId: string | null
 }
 
-const callGroqAPI = async({contents, user_id, currentConversationId} : Props) => {
+const callGroqAPI = async({contents, currentConversationId} : Props) => {
+    const api_url = import.meta.env.VITE_API_URL;
     try {
-        const response = await fetch('https://synapse-backend-3.onrender.com/chat/', {
+        const response = await fetch(`${api_url}/chat/`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 contents: contents,
-                user_id: user_id,
                 currentConversationId: currentConversationId,
             })
         })
